@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vendor Panel – Qwick Drop Solution</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
   <style>
     *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
     body{background:#eef2f5}
@@ -30,12 +31,60 @@
     .main{flex:1;padding:25px}
     .section{display:none;}
     .section.active{display:block}
-
+    .dash-header{ text-align: center;padding-bottom: 10px;}
     .page-title{background:#f5cbaa;padding:18px 20px;border-radius:14px;font-size:20px;font-weight:500;margin-bottom:25px}
 
     /* CARDS */
-    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:50px}
     .card{background:#e9780e;color:#fff;padding:22px;border-radius:18px}
+   /* ===== PROMO SECTION ===== */
+.promo-section{
+  margin-top:30px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:20px;
+}
+
+.promo-card{
+  background:#fff;
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid #e5e7eb;
+  transition:all 0.3s ease;
+}
+
+.promo-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 12px 30px rgba(0,0,0,0.08);
+}
+
+.promo-card img{
+  width:100%;
+  height:170px;
+  object-fit:cover;
+}
+
+.promo-card h4{
+  padding:15px 15px 5px;
+  font-size:16px;
+  font-weight:600;
+  color:#111827;
+}
+
+.promo-card p{
+  padding:0 15px 15px;
+  font-size:13px;
+  color:#6b7280;
+}
+.sidebar a{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.sidebar a .material-icons-outlined{
+  font-size:20px;
+}
 
     /* TABLE */
     .table-wrap{background:#fff;border-radius:16px;padding:15px}
@@ -53,7 +102,7 @@
     .dropdown-btn{width:100%;padding:12px;border:none;border-radius:10px;background:#2563eb;color:#fff;font-size:14px;cursor:pointer;margin-bottom:15px}
     .password-box{display:none}
     .password-box input{width:100%;padding:10px;margin-bottom:12px;border-radius:10px;border:1px solid #e5e7eb}
-        /* LEAD DETAILS */
+/* LEAD DETAILS */
 .lead-header{
   background:#fff;
   padding:16px 20px;
@@ -170,6 +219,40 @@
   background:#fee2e2;
   color:#991b1b;
 }
+
+/* ===== INVOICE DETAILS ===== */
+
+.invoice-header-bar{
+  background:#fff;
+  padding:16px 20px;
+  border-radius:14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+.invoice-actions{
+  display:flex;
+  gap:10px;
+}
+
+.btn-red{
+  background:#ef4444;
+  color:#fff;
+}
+
+.total-amount{
+  margin-top:15px;
+  font-size:18px;
+  color:#16a34a;
+}
+
+.pricing-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;
+}
 /* ===== VENDOR PROFILE ===== */
 
 .vendor-profile{
@@ -216,15 +299,33 @@
   background:#dcfce7;
   color:#166534;
 }
-
-/* RESPONSIVE */
-@media(max-width:768px){
-  .vendor-profile{
-    grid-template-columns:1fr;
-  }
+.vendor-header{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  margin-bottom:30px;
 }
 
-    /* RESPONSIVE */
+.vendor-logo{
+  width:65px;
+  height:65px;
+  border-radius:50%;
+  background:#fff;
+  border:1px solid #e5e7eb;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  flex-shrink:0;
+}
+
+.vendor-logo img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+/* RESPONSIVE */
     @media(max-width:768px){
       .menu-btn{display:block}
       .sidebar{position:fixed;left:-100%;top:60px;z-index:999}
@@ -234,6 +335,7 @@
       .profile-layout{grid-template-columns:1fr}
       .pickup-drop{grid-template-columns:1fr}
       .vendor-profile{grid-template-columns:1fr;}
+      .invoice-header-bar{flex-direction:column; align-items:flex-start; gap:10px;}
     }
   </style>
 </head>
@@ -249,26 +351,72 @@
 
 <div class="layout">
   <div class="sidebar">
-    <a class="active" onclick="openPanel('vdash',this)">Dashboard</a>
-    <a onclick="openPanel('vlead',this)">My Leads</a>
-    <a onclick="openPanel('vinvoice',this)">Invoices</a>
-    <a onclick="openPanel('vprofile',this)">Profile</a>
+    <a class="active" onclick="openPanel('vdash',this)">
+  <span class="material-icons-outlined">dashboard</span>
+  <span>Dashboard</span>
+</a>
 
+<a onclick="openPanel('vlead',this)">
+  <span class="material-icons-outlined">groups</span>
+  <span>My Leads</span>
+</a>
+
+<a onclick="openPanel('vinvoice',this)">
+  <span class="material-icons-outlined">receipt_long</span>
+  <span>Invoices</span>
+</a>
+
+<a onclick="openPanel('vprofile',this)">
+  <span class="material-icons-outlined">person</span>
+  <span>Profile</span>
+</a>
     <div class="sidebar-logout">
       <button onclick="logoutVendor()">🚪 Logout</button>
     </div>
   </div>
 
   <div class="main">
-
+<div class="dash-header">
+  <div>
+    <h2>Welcome, Qwick Drop 👋</h2>
+  </div>
+</div>
     <div id="vdash" class="section active">
       <div class="page-title">Vendor Dashboard</div>
       <div class="cards">
-        <div class="card"><h3>Total Leads</h3><p style="font-size:26px">12</p></div>
+        <div class="card" style="background: #dc2626;"><h3>Total Leads</h3><p style="font-size:26px">12</p></div>
         <div class="card"><h3>Active Leads</h3><p style="font-size:26px">7</p></div>
-        <div class="card"><h3>Package Started</h3><p>01 Jan 2025</p></div>
-        <div class="card"><h3>Package Expiry</h3><p>31 Jan 2025</p></div>
+        <div class="card" style="background: #0e1524;"><h3>Package Started</h3><p>01 Jan 2025</p></div>
+        <div class="card" style="background: #169da1;"><h3>Package Expiry</h3><p>31 Jan 2025</p></div>
       </div>
+      <!-- PROMO SECTION -->
+<div class="promo-section">
+
+  <div class="promo-card">
+    <img src="leads.png" alt="Verified Leads">
+    <h4>100% Verified Moving Leads</h4>
+    <p>Real customers, no fake enquiries</p>
+  </div>
+
+  <div class="promo-card">
+    <img src="growth.jpg" alt="Business Growth">
+    <h4>Grow Your Packers Business</h4>
+    <p>More leads, more conversions</p>
+  </div>
+
+  <div class="promo-card">
+    <img src="support.png" alt="Support">
+    <h4>Dedicated Vendor Support</h4>
+    <p>We help you close deals faster</p>
+  </div>
+
+  <div class="promo-card">
+    <img src="growth.jpg" alt="Trust">
+    <h4>Trusted by 500+ Vendors</h4>
+    <p>India’s growing movers network</p>
+  </div>
+</div>
+
     </div>
 
     <div id="vlead" class="section">
@@ -283,10 +431,9 @@
         </table>
       </div>
     </div>
-
+<!-- LEAD DETAILS -->
   <div id="leadDetails" class="section">
-
-  <!-- HEADER -->
+   <!-- HEADER -->
   <div class="lead-header">
     <h2>Lead Details</h2>
     <button class="back-btn" onclick="openPanel('vlead')">← Back</button>
@@ -376,49 +523,101 @@
 
   <div class="page-title">Invoices</div>
 
-  <div class="invoice-card">
-    <div class="invoice-header">
-      <h3>Invoice List</h3>
+  <div class="table-wrap">
+    <table>
+      <tr>
+        <th>Customer</th>
+        <th>Phone</th>
+        <th>Total</th>
+        <th>Action</th>
+      </tr>
+
+      <tr data-invoice='{
+        "company":"Mamta Packers & Movers",
+        "phone":"9281831402",
+        "locality":"Noida Sector 62",
+        "category":"Household Shifting",
+        "subCategory":"1RK",
+        "state":"UP",
+        "city":"Noida",
+        "package":"Premium",
+        "price":5000,
+        "qty":84,
+        "sales":"Tatiana Mason",
+        "service":"Cade Frazier",
+        "txn":"TXN89234",
+        "utr":"UTR778899",
+        "date":"16 Dec 2021"
+      }'>
+        <td>Mamta Packers</td>
+        <td>9281831402</td>
+        <td>₹4,20,000</td>
+        <td>
+          <button class="btn btn-blue" onclick="viewInvoice(this)">View</button>
+        </td>
+      </tr>
+     </table>
+  </div>
+</div>
+ <!-- INVOICES DETAILS -->
+<div id="invoiceDetails" class="section">
+
+  <div class="lead-header">
+    <h2>Invoice Details</h2>
+    <button class="btn btn-red">📄 Generate PDF</button>
+    <button class="back-btn" onclick="openPanel('vinvoice')">← Back</button>
+  </div>
+
+  <div class="info-card">
+    <h3 class="section-title">Basic Information</h3>
+    <div class="info-grid">
+      <div><span>Company</span><p id="invCompany"></p></div>
+      <div><span>Phone</span><p id="invPhone"></p></div>
+      <div><span>Locality</span><p id="invLocality"></p></div>
     </div>
+  </div>
 
-    <div class="invoice-table">
-      <table>
-        <thead>
-          <tr>
-            <th>Invoice No</th>
-            <th>Customer</th>
-            <th>Service</th>
-            <th>Amount</th>
-            <th>Status</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>#INV-1023</td>
-            <td>Rohan singh</td>
-            <td>House Shifting</td>
-            <td>₹18,500</td>
-            <td><span class="status paid">Paid</span></td>
-            <td>
-              <button class="btn btn-green">View</button>
-            </td>
-          </tr>
-
-          <tr>
-            <td>#INV-1024</td>
-            <td>John Smith</td>
-            <td>Office Relocation</td>
-            <td>₹25,000</td>
-            <td><span class="status pending">Pending</span></td>
-            <td>
-              <button class="btn btn-blue">View</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+  <div class="info-card">
+    <h3 class="section-title">Category</h3>
+    <div class="info-grid">
+      <div><span>Category</span><p id="invCategory"></p></div>
+      <div><span>Sub Category</span><p id="invSubCategory"></p></div>
     </div>
+  </div>
 
+  <div class="info-card">
+    <h3 class="section-title">Location</h3>
+    <div class="info-grid">
+      <div><span>State</span><p id="invState"></p></div>
+      <div><span>City</span><p id="invCity"></p></div>
+    </div>
+  </div>
+
+  <div class="info-card">
+    <h3 class="section-title">Package & Pricing</h3>
+    <div class="info-grid">
+      <div><span>Package</span><p id="invPackage"></p></div>
+      <div><span>Price</span><p id="invPrice"></p></div>
+      <div><span>Quantity</span><p id="invQty"></p></div>
+      <div><span>Total</span><p id="invTotal"></p></div>
+    </div>
+  </div>
+
+  <div class="info-card">
+    <h3 class="section-title">Employee Details</h3>
+    <div class="info-grid">
+      <div><span>Sales</span><p id="invSales"></p></div>
+      <div><span>Service</span><p id="invService"></p></div>
+    </div>
+  </div>
+
+  <div class="info-card">
+    <h3 class="section-title">Payment</h3>
+    <div class="info-grid">
+      <div><span>Transaction ID</span><p id="invTxn"></p></div>
+      <div><span>UTR</span><p id="invUtr"></p></div>
+      <div><span>Date</span><p id="invDate"></p></div>
+    </div>
   </div>
 </div>
 <!-- VENDOR PROFILE -->
@@ -428,39 +627,101 @@
 
   <div class="vendor-profile">
 
-    <!-- LEFT -->
+    <!-- LEFT CARD -->
     <div class="vendor-card">
-      <h3>Profile Information</h3>
 
-      <div class="profile-grid">
-        <div><span>Vendor Name</span><p>Qwick Drop Vendor</p></div>
-        <div><span>Company</span><p>Qwick Drop Solution</p></div>
-        <div><span>Email</span><p>piwucce@mailinator.com</p></div>
-        <div><span>Phone</span><p>+91 XXXXXXXX</p></div>
-        <div><span>Package</span><p>Premium</p></div>
-        <div><span>Expiry</span><p>31 Jan 2025</p></div>
+      <!-- PROFILE HEADER -->
+      <div class="vendor-header">
+        <div class="vendor-logo">
+          <img src="qwickdroplogo.png" alt="Vendor Logo">
+        </div>
+
+        <div>
+          <h3>Qwick Drop Vendor</h3>
+          <span class="badge active">Active Vendor</span>
+        </div>
       </div>
 
-      <span class="badge active">Active Vendor</span>
+      <!-- PROFILE DETAILS -->
+      <div class="profile-grid">
+        <div>
+          <span>Company</span>
+          <p>Qwick Drop Solution</p>
+        </div>
+
+        <div>
+          <span>Email</span>
+          <p>piwucce@mailinator.com</p>
+        </div>
+
+        <div>
+          <span>Phone</span>
+          <p>+91 XXXXXXXX</p>
+        </div>
+
+        <div>
+          <span>City</span>
+          <p>Jaipur, Rajasthan</p>
+        </div>
+
+        <div>
+          <span>Joined On</span>
+          <p>10 Jan 2025</p>
+        </div>
+
+        <div>
+          <span>Verification</span>
+          <p style="color:#16a34a;font-weight:600;">Verified</p>
+        </div>
+      </div>
+
     </div>
 
-    <!-- RIGHT -->
+    <!-- RIGHT CARD -->
     <div class="vendor-card">
-      <h3>Security</h3>
 
-      <button class="dropdown-btn" onclick="togglePasswordBox()">Change Password</button>
+      <h3>Subscription</h3>
+
+      <div class="profile-grid">
+        <div>
+          <span>Package</span>
+          <p>Premium</p>
+        </div>
+
+        <div>
+          <span>Price</span>
+          <p>₹5,999 / Month</p>
+        </div>
+
+        <div>
+          <span>Leads Limit</span>
+          <p>Unlimited</p>
+        </div>
+
+        <div>
+          <span>Start Date</span>
+          <p>01 Jan 2025</p>
+        </div>
+
+        <div>
+          <span>Expiry Date</span>
+          <p style="color:#dc2626;font-weight:600;">31 Jan 2025</p>
+        </div>
+      </div>
+
+      <button class="dropdown-btn" onclick="togglePasswordBox()" style="margin-top:20px;">
+        Change Password
+      </button>
 
       <div class="password-box" id="passwordBox">
         <input type="password" placeholder="New Password">
         <input type="password" placeholder="Confirm Password">
-        <button class="btn btn-green" style="width:100%">Update Password</button>
+        <button class="btn btn-green" style="width:100%;">Update Password</button>
       </div>
+
     </div>
 
   </div>
-
-</div>
-
 </div>
 
 <script>
@@ -471,13 +732,43 @@
     if(el) el.classList.add('active');
     document.querySelector('.sidebar').classList.remove('show');
   }
-  function openLeadDetails(){openPanel('leadDetails')}
+
+  function toggleSidebar(){
+    document.querySelector('.sidebar').classList.toggle('show');
+  }
+
+  function openLeadDetails(){
+    openPanel('leadDetails');
+  }
+
   function togglePasswordBox(){
     const b=document.getElementById('passwordBox');
     b.style.display=b.style.display==='block'?'none':'block';
   }
-  function toggleSidebar(){document.querySelector('.sidebar').classList.toggle('show')}
-  function logoutVendor(){alert('Logged Out')}
+
+  function viewInvoice(btn){
+    const row = btn.closest('tr');
+    const data = JSON.parse(row.dataset.invoice);
+
+    document.getElementById('invCompany').innerText = data.company;
+    document.getElementById('invPhone').innerText = data.phone;
+    document.getElementById('invLocality').innerText = data.locality;
+    document.getElementById('invCategory').innerText = data.category;
+    document.getElementById('invSubCategory').innerText = data.subCategory;
+    document.getElementById('invState').innerText = data.state;
+    document.getElementById('invCity').innerText = data.city;
+    document.getElementById('invPackage').innerText = data.package;
+    document.getElementById('invPrice').innerText = "₹" + data.price;
+    document.getElementById('invQty').innerText = data.qty;
+    document.getElementById('invTotal').innerText = "₹" + (data.price * data.qty);
+    document.getElementById('invSales').innerText = data.sales;
+    document.getElementById('invService').innerText = data.service;
+    document.getElementById('invTxn').innerText = data.txn;
+    document.getElementById('invUtr').innerText = data.utr;
+    document.getElementById('invDate').innerText = data.date;
+
+    openPanel('invoiceDetails');
+  }
 </script>
 
 </body>
