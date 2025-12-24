@@ -8,22 +8,35 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
   <style>
     *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-    body{background:#eef2f5}
+    body{background:#c6d0e6}
 
     /* TOPBAR */
-    .topbar{height:60px;background:#111;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 20px;position:fixed;top:0;left:0;right:0;z-index:1000;border-bottom:1px solid #fff;}
+    .topbar{height:60px;
+      background:#fff;
+      color:#000;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 20px;
+      position:fixed;top:0;
+      left:0;right:0;
+      border-bottom:1px solid #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 1000;
+    }
     .brand{display:flex;align-items:center;gap:10px}
     .brand img{height:48px}
     .menu-btn{display:none;font-size:22px;cursor:pointer}
-
+    
     /* LAYOUT */
 .layout{
   margin-top:60px;
+  
 }
     /* SIDEBAR*/
 .sidebar{
   width:230px;
-  background:#000;
+  background:#fff;
   color:#fff;
   height:calc(100vh - 60px);
   padding:20px;
@@ -31,16 +44,19 @@
   top:60px;
   left:0;
   overflow-y:auto;
+  box-shadow: 4px 0 14px rgba(0,0,0,0.25);
+  z-index: 999;
 }
 
-    .sidebar a{display:block;color:#cbd5e1;text-decoration:none;padding:12px;border-radius:8px;margin-bottom:8px;cursor:pointer}
-    .sidebar a:hover,.sidebar a.active{background:#e4dddd57;color:#000;font-weight:500}
+    .sidebar a{display:block;color:#000;text-decoration:none;padding:12px;border-radius:8px;margin-bottom:8px;cursor:pointer}
+    .sidebar a:hover,.sidebar a.active{background:#ED8F03;color:#fff;font-weight:500}
 
     .sidebar-logout{position:absolute;bottom:20px;left:20px;width:calc(100% - 40px)}
-    .sidebar-logout button{width:100%;padding:12px;border:none;border-radius:10px;background:#e4dddd46;color:#fff;font-size:14px;cursor:pointer}
+    .sidebar-logout button{width:100%;padding:12px;border:none;border-radius:10px;background:#ED8F03;color:#fff;font-size:14px;cursor:pointer}
 
     /* MAIN */
 .main{
+  background: #c6d0e6;
   margin-left:230px;
   padding:25px;
   flex:1;
@@ -49,7 +65,7 @@
     .section{display:none;}
     .section.active{display:block}
     .dash-header{ text-align: center;padding-bottom: 10px;}
-    .page-title{background:#f5cbaa;padding:18px 20px;border-radius:14px;font-size:20px;font-weight:500;margin-bottom:25px}
+    .page-title{background:#f5cbaa;padding:18px 20px;border-radius:14px;font-size:20px;font-weight:500;margin-bottom:25px; box-shadow: 4px 0 14px rgba(0,0,0,0.25);z-index: 999; text-align: center;}
 
     /*HEADER CARDS */
     .card{background:#e9780e;color:#fff;padding:22px;border-radius:18px}
@@ -97,9 +113,9 @@
 
 /* Gradient Themes */
 .vdash-card.blue{
-background: #FFB75E;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #ED8F03, #FFB75E);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #ED8F03, #FFB75E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: #FFB75E;
+background: -webkit-linear-gradient(to right, #ED8F03, #FFB75E);  
+background: linear-gradient(to right, #ED8F03, #FFB75E);
 
 }
 
@@ -110,16 +126,16 @@ background: linear-gradient(to right, #141517, #6A9113);
 }
 
 .vdash-card.red{
-background: #7b4397;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #dc2430, #7b4397);  /* Chrome 10-25, Safari 5.1-6 */
+background: #7b4397; 
+background: -webkit-linear-gradient(to right, #dc2430, #7b4397); 
 background: linear-gradient(to right, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
 
 .vdash-card.purple{
 background: #E6DADA;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #274046, #E6DADA);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #274046, #E6DADA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: -webkit-linear-gradient(to right, #274046, #292525);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #274046, #302929); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
 
@@ -173,9 +189,16 @@ background: linear-gradient(to right, #274046, #E6DADA); /* W3C, IE 10+/ Edge, F
 }
 
     /* TABLE */
-    .table-wrap{background:#fff;border-radius:16px;padding:15px}
-    table{width:100%;border-collapse:collapse}
-    th,td{padding:12px;border-bottom:1px solid #eee;font-size:14px;text-align:left}
+    .table-wrap{
+     background:#fff;
+     border-radius:16px;
+     padding:15px;
+     overflow-x:auto;          
+     -webkit-overflow-scrolling: touch;
+     }
+
+    table{width:100%;border-collapse:collapse; min-width:650px; }
+    th,td{padding:12px;border-bottom:1px solid #eee;font-size:14px;text-align:left;white-space:nowrap;}
     th{background:#f3f4f6}
 
     .btn{padding:6px 12px;border-radius:6px;border:none;color:#fff;cursor:pointer}
@@ -184,8 +207,8 @@ background: linear-gradient(to right, #274046, #E6DADA); /* W3C, IE 10+/ Edge, F
 
     /* PROFILE */
     .profile-layout{display:grid;grid-template-columns:2fr 1fr;gap:20px}
-    .profile-info,.profile-password{background:#fff;padding:22px;border-radius:18px}
-    .dropdown-btn{width:100%;padding:12px;border:none;border-radius:10px;background:#2563eb;color:#fff;font-size:14px;cursor:pointer;margin-bottom:15px}
+    .profile-info,.profile-password{background: #c6d0e6;padding:22px;border-radius:18px}
+    .dropdown-btn{width:70%;padding:12px;border:none;border-radius:10px;background:#2563eb;color:#fff;font-size:14px;cursor:pointer;margin-bottom:15px}
     .password-box{display:none}
     .password-box input{width:100%;padding:10px;margin-bottom:12px;border-radius:10px;border:1px solid #e5e7eb}
 /* LEAD DETAILS */
@@ -267,7 +290,6 @@ background: linear-gradient(to right, #274046, #E6DADA); /* W3C, IE 10+/ Edge, F
 }
 
 /* ===== INVOICE SECTION ===== */
-
 .invoice-card{
   background:#fff;
   padding:20px;
@@ -339,6 +361,73 @@ background: linear-gradient(to right, #274046, #E6DADA); /* W3C, IE 10+/ Edge, F
   grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
   gap:15px;
 }
+/* ===== EXPIRED PLAN ===== */
+.expired-plan{
+  background:#fff;
+  margin-top:35px;
+  padding:22px;
+  border-radius:18px;
+  border:1px solid #fee2e2;
+}
+
+.expired-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:18px;
+}
+
+.expired-header h3{
+  font-weight:500;
+  color:#111827;
+}
+
+.expired-badge{
+  background:#fee2e2;
+  color:#991b1b;
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:500;
+}
+
+.expired-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;
+  margin-bottom:20px;
+}
+
+.expired-grid span{
+  font-size:13px;
+  color:#6b7280;
+}
+
+.expired-grid p{
+  font-weight:500;
+}
+
+.text-red{
+  color:#dc2626;
+  font-weight:600;
+}
+
+.renew-btn{
+  background:linear-gradient(135deg,#dc2626,#991b1b);
+  color:#fff;
+  border:none;
+  padding:12px 22px;
+  border-radius:12px;
+  font-size:14px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.renew-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 20px rgba(220,38,38,0.35);
+}
+
 /* ===== VENDOR PROFILE ===== */
 
 .vendor-profile{
@@ -352,7 +441,12 @@ background: linear-gradient(to right, #274046, #E6DADA); /* W3C, IE 10+/ Edge, F
   padding:22px;
   border-radius:18px;
 }
-
+.vendor-card-pass{
+  background: #c6d0e6;
+  padding:22px;
+  border-radius:18px;
+  text-align: center;
+}
 .vendor-card h3{
   margin-bottom:15px;
   font-weight:500;
@@ -416,12 +510,14 @@ background: linear-gradient(to right, #274046, #E6DADA); /* W3C, IE 10+/ Edge, F
       .menu-btn{display:block}
       .sidebar{left:-100%;transition:0.3s;}
       .sidebar.show{left:0}
+      .dash-header{ display: none;}
       .layout{flex-direction:column}
       .main{margin-left:0;}
       .profile-layout{grid-template-columns:1fr}
       .pickup-drop{grid-template-columns:1fr}
       .vendor-profile{grid-template-columns:1fr;}
       .invoice-header-bar{flex-direction:column; align-items:flex-start; gap:10px;}
+      strong{font-size: 12px;}
     }
   </style>
 </head>
@@ -431,8 +527,13 @@ background: linear-gradient(to right, #274046, #E6DADA); /* W3C, IE 10+/ Edge, F
   <div class="brand">
     <span class="menu-btn" onclick="toggleSidebar()">☰</span>
     <img src="qwickdroplogo.png" alt="logo">
-    <strong>Vendor Panel</strong>
+    <strong>Vendor Panel - QWICK DROP SOLUTION</strong>
   </div>
+  <div class="dash-header">
+  <div>
+    <h2>Welcome, Qwick Drop 👋</h2>
+  </div>
+</div>
 </div>
 <!-- sidebar -->
 <div class="layout">
@@ -452,6 +553,11 @@ background: linear-gradient(to right, #274046, #E6DADA); /* W3C, IE 10+/ Edge, F
   <span>Invoices</span>
 </a>
 
+<a onclick="openPanel('vpackage',this)">
+  <span class="material-icons-outlined">workspace_premium</span>
+  <span>Subscription</span>
+</a>
+
 <a onclick="openPanel('vprofile',this)">
   <span class="material-icons-outlined">person</span>
   <span>Profile</span>
@@ -464,11 +570,7 @@ background: linear-gradient(to right, #274046, #E6DADA); /* W3C, IE 10+/ Edge, F
 <div class="main">
 <!-- vendor-dashboard sec -->
   <div id="vdash" class="section active">
-<div class="dash-header">
-  <div>
-    <h2>Welcome, Qwick Drop 👋</h2>
-  </div>
-</div>
+
 <div class="page-title">Vendor Dashboard</div>
 <!-- Vcards -->
        <div class="vdash-cards">
@@ -493,7 +595,7 @@ background: linear-gradient(to right, #274046, #E6DADA); /* W3C, IE 10+/ Edge, F
   <!-- Expired Package -->
   <div class="vdash-card red">
     <div class="card-top">
-      <span class="material-icons-outlined">event_busy</span>
+      <span class="material-icons-outlined">rocket_launch</span>
       <span class="card-title">Package Started</span>
     </div>
     <h2>10 jan 2026</h2>
@@ -502,7 +604,7 @@ background: linear-gradient(to right, #274046, #E6DADA); /* W3C, IE 10+/ Edge, F
   <!-- Package Started -->
   <div class="vdash-card purple">
     <div class="card-top">
-      <span class="material-icons-outlined">rocket_launch</span>
+      <span class="material-icons-outlined">event_busy</span>
       <span class="card-title">Package Expired</span>
     </div>
     <h2>1 feb 2026</h2>
@@ -739,6 +841,112 @@ background: linear-gradient(to right, #274046, #E6DADA); /* W3C, IE 10+/ Edge, F
     </div>
   </div>
 </div>
+<!-- SUBSCRIPTION PACKAGE -->
+<div id="vpackage" class="section">
+
+  <div class="page-title">Subscription Package</div>
+
+  <div class="vendor-card">
+
+    <div class="vendor-header">
+      <span class="material-icons-outlined" style="font-size:38px;color:#2563eb;">
+        workspace_premium
+      </span>
+
+      <div>
+        <h3>Household</h3>
+        <span class="badge active">Active</span>
+      </div>
+    </div>
+
+    <div class="profile-grid">
+
+      <div>
+        <span>Billing Cycle</span>
+        <p>Monthly</p>
+      </div>
+
+      <div>
+        <span>Start Date</span>
+        <p>01 Jan 2025</p>
+      </div>
+
+      <div>
+        <span>Expiry Date</span>
+        <p style="color:#dc2626;font-weight:600;">31 Jan 2025</p>
+      </div>
+
+      <div>
+        <span>Auto Renewal</span>
+        <p>Enabled</p>
+      </div>
+
+      <div>
+        <span>Leads Limit</span>
+        <p>Unlimited</p>
+      </div>
+
+      <div>
+        <span>Support</span>
+        <p>Priority</p>
+      </div>
+
+    </div>
+
+    <hr style="margin:20px 0;border:0;border-top:1px solid #e5e7eb;">
+
+    <h4 style="margin-bottom:10px;">Plan Benefits</h4>
+
+    <ul style="line-height:1.9;font-size:14px;color:#374151;">
+      <li>✔ Unlimited verified moving leads</li>
+      <li>✔ City-wise lead filtering</li>
+      <li>✔ Priority vendor support</li>
+      <li>✔ Invoice & payment tracking</li>
+    </ul>
+
+    <button class="btn btn-blue" style="margin-top:20px;">
+      Renew / Upgrade Plan
+    </button>
+
+  </div>
+<!-- EXPIRED PLAN SECTION -->
+<div class="expired-plan">
+
+  <div class="expired-header">
+    <h3>Subscription Status</h3>
+    <span class="expired-badge">Expired</span>
+  </div>
+
+  <div class="expired-grid">
+    <div>
+      <span>Plan Name</span>
+      <p>Local and Domestic Pack</p>
+    </div>
+
+    <div>
+      <span>Expiry Date</span>
+      <p>31 Jan 2025</p>
+    </div>
+
+    <div>
+      <span>Leads Limit</span>
+      <p>Unlimited</p>
+    </div>
+
+    <div>
+      <span>Status</span>
+      <p class="text-red">Expired</p>
+    </div>
+  </div>
+
+  <button class="renew-btn">
+    Renew Plan
+  </button>
+
+</div>
+</div>
+
+
 <!-- VENDOR PROFILE -->
 <div id="vprofile" class="section">
 
@@ -797,46 +1005,15 @@ background: linear-gradient(to right, #274046, #E6DADA); /* W3C, IE 10+/ Edge, F
     </div>
 
     <!-- RIGHT CARD -->
-    <div class="vendor-card">
-
-      <h3>Subscription</h3>
-
-      <div class="profile-grid">
-        <div>
-          <span>Package</span>
-          <p>Premium</p>
-        </div>
-
-        <div>
-          <span>Price</span>
-          <p>₹5,999 / Month</p>
-        </div>
-
-        <div>
-          <span>Leads Limit</span>
-          <p>Unlimited</p>
-        </div>
-
-        <div>
-          <span>Start Date</span>
-          <p>01 Jan 2025</p>
-        </div>
-
-        <div>
-          <span>Expiry Date</span>
-          <p style="color:#dc2626;font-weight:600;">31 Jan 2025</p>
-        </div>
-      </div>
-
+    <div class="vendor-card-pass">
       <button class="dropdown-btn" onclick="togglePasswordBox()" style="margin-top:20px;">
         Change Password
       </button>
-
-      <div class="password-box" id="passwordBox">
-        <input type="password" placeholder="New Password">
-        <input type="password" placeholder="Confirm Password">
-        <button class="btn btn-green" style="width:100%;">Update Password</button>
-      </div>
+     <div class="password-box" id="passwordBox">
+     <input type="password" placeholder="New Password" required>
+     <input type="password" placeholder="Confirm Password" required>
+     <button class="btn btn-green" style="width:100%;">Update Password</button>
+     </div>
 
     </div>
 
